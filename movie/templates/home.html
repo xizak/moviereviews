@@ -1,0 +1,98 @@
+{% extends "base.html" %} {% block content %}
+<div class="container text-center my">
+  <h1>Welcome to MessHouse</h1>
+  <h2>The home of all movies</h2>
+</div>
+<div class="container my-4">
+  <form class="mb-3">
+    <div class="input-group">
+      <input
+        type="text"
+        name="searchMovie"
+        class="form-control"
+        placeholder="Search for Movie"
+      />
+      <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+  </form>
+  <p>Searching for {{searchTerm}}</p>
+
+  <style>
+    .card {
+      height: 100%;
+    }
+    .card-img-top {
+      object-fit: cover;
+      height: 600px; /* Adjust the height as needed */
+    }
+  </style>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for movie in movies %}
+    <div class="col">
+      <div class="card h-100 custom-card">
+        <img
+          class="card-img-top"
+          src="{{ movie.image.url }}"
+          alt="Movie Image"
+        />
+        <div class="card-body">
+          <a href="{% url 'detail' movie.id %}">
+            <h5 class="card-title fw-bold">{{ movie.title }}</h5>
+          </a>
+          <p class="card-text">{{ movie.description }}</p>
+          {% if movie.url %}
+          <a href="{{ movie.url }}" class="btn btn-primary">Movie Link</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <h2>Join our mailing list:</h2>
+  <form action="{% url 'signup' %}" class="mb-3">
+    <div class="input-group">
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        placeholder="Enter your email"
+      />
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </div>
+  </form>
+</div>
+
+<div class="container my-4">
+  <div class="card">
+    <div class="card-header">News</div>
+    <div class="card-body">
+      <h5 class="card-title">See the latest News</h5>
+      <p class="card-text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae quod
+        voluptatem.
+      </p>
+      <a href="{% url 'news' %}" class="btn btn-primary">recentNews</a>
+    </div>
+  </div>
+</div>
+
+<div class="container my-4">
+  <div class="card">
+    <div class="card-header">Featured</div>
+    <div class="card-body">
+      <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae quod
+        voluptatem.
+      </p>
+      <a href="{% url 'about' %}" class="btn btn-primary">About</a>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+{% endblock content %}

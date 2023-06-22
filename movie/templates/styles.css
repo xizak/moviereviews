@@ -1,0 +1,49 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: antiquewhite;
+}
+
+h1,
+h2 {
+  color: #333;
+}
+
+header {
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #333;
+  text-decoration: none;
+}
+
+main {
+  padding: 20px;
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Footer styles */
+footer {
+  background-color: #f5f5f5;
+  padding: 10px;
+  text-align: center;
+}
